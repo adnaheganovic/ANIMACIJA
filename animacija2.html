@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animacija</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <section>
+      <div class="loader"></div>
+    </section>
+
+    <script>
+      let max = 360;
+      let loader = document.querySelector(".loader");
+
+      for (let i = 0; i < max; i++) {
+        span = document.createElement("span");
+        span.style.setProperty("--i", i);
+
+        loader.append(span);
+      }
+
+      console.log(loader.children);
+    </script>
+  </body>
+</html>
+<style>
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    transition: all 0.35s linear;
+}
+
+section {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    background-color: #111;
+}
+
+.loader {
+    width: 20rem;
+    height: 20rem;
+    position: relative;
+}
+
+.loader span {
+    background-color: #242424;
+    position: absolute;
+    width: 4rem;
+    height: 3px;
+    display: block;
+    transform: rotateZ(calc(1deg * var(--i)));
+    transform-origin: 10rem;
+    top: 10rem;
+    animation: gradient 1.8s infinite linear;
+    animation-delay: calc(5ms * var(--i));
+}
+
+@keyframes gradient {
+    0% {
+        background-color: #fb5dad;
+    }
+
+    50% {
+        background-color: #55fb9f;
+    }
+
+    100% {
+        background-color: #b97aff;
+    }
+}
+</style>
